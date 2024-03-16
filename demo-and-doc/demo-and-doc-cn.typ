@@ -25,7 +25,7 @@ Cuti 使用 0.02857em 作为 `stroke` 的参数。在 Microsoft Office 中，使
   radius: 0pt,
   text-style: (font: ("Courier New", "SimHei")),
   ```typst
-  #import lib.typ: show-cn-fakebold
+  #import "lib.typ": show-cn-fakebold
   #show text: show-cn-fakebold
   #show strong: show-cn-fakebold
   ```
