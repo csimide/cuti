@@ -92,7 +92,7 @@ Cuti 使用 0.02857em 作为 `stroke` 的参数。在 Microsoft Office 中，使
   radius: 0pt,
   text-style: (font: ("Courier New", "SimHei")),
   ```typst
-  + RegExp `[a-ko]`: #regex-fakebold(reg-exp: "[a-o]")[#lorem(5)]
+  + RegExp `[a-o]`: #regex-fakebold(reg-exp: "[a-o]")[#lorem(5)]
   + RegExp `\p{script=Han}`: #regex-fakebold(reg-exp: "\p{script=Han}")[衬衫的价格是9磅15便士。] \
   #set text(weight: "bold")
   + RegExp `\p{script=Han}`: #regex-fakebold(reg-exp: "\p{script=Han}")[衬衫的价格是9磅15便士。]
@@ -158,8 +158,8 @@ Cuti 使用 0.02857em 作为 `stroke` 的参数。在 Microsoft Office 中，使
   stroke: (paint: blue, thickness: 1pt, dash: "dashed"),
   inset: 10pt,
 )[
-  #show strong: it => show-fakebold(reg-exp: "[\p{script=Han} ！-･]", it)
-  Regular: 我正在使用 Typst 排版。\
+  #show strong: it => show-fakebold(reg-exp: "\p{script=Han}", it)
+  Regular: 我正在使用 Typst 排版。 \
   Strong: *我正在使用 Typst 排版。*
 ]
 
