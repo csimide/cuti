@@ -1,0 +1,9 @@
+[package]
+name = "Cuti"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Csimide"]
+license = "MIT"
+description = "Easily simulate (fake) bold characters."
+compiler = "0.11.0"
+exclude = ["demo-and-doc"]
