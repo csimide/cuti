@@ -13,7 +13,7 @@ Please refer to the [English Demo & Doc](./demo-and-doc/demo-and-doc.pdf) locate
 Please add the following content at the beginning of the document:
 
 ```typst
-#import "lib.typ": show-cn-fakebold
+#import "@preview/cuti:0.1.0": show-cn-fakebold
 #show text: show-cn-fakebold
 #show strong: show-cn-fakebold
 ```
@@ -37,7 +37,7 @@ Bold + Fakebold: #fakebold[#lorem(5)]
 ### `regex-fakebold`
 
 ```typst
-+ RegExp `[a-k]`: #regex-fakebold(reg-exp: "[a-o]")[#lorem(5)]
++ RegExp `[a-o]`: #regex-fakebold(reg-exp: "[a-o]")[#lorem(5)]
 + RegExp `\p{script=Han}`: #regex-fakebold(reg-exp: "\p{script=Han}")[衬衫的价格是9磅15便士。] \
 #set text(weight: "bold")
 + RegExp `\p{script=Han}`: #regex-fakebold(reg-exp: "\p{script=Han}")[衬衫的价格是9磅15便士。]
