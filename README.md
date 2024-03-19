@@ -14,8 +14,7 @@ Please add the following content at the beginning of the document:
 
 ```typst
 #import "@preview/cuti:0.1.0": show-cn-fakebold
-#show text: show-cn-fakebold
-#show strong: show-cn-fakebold
+#show: show-cn-fakebold
 ```
 
 Then, the bolding for SimHei, SimSun, and KaiTi fonts should work correctly.
@@ -23,15 +22,14 @@ Then, the bolding for SimHei, SimSun, and KaiTi fonts should work correctly.
 ### `fakebold`
 
 ```typst
-Fakebold: #fakebold[#lorem(5)] \
-Bold: #text(weight: "bold", lorem(5)) \
-Bold + Fakebold: #fakebold[#text(weight: "bold", lorem(5))] \
+- Fakebold: #fakebold[#lorem(5)]
+- Bold: #text(weight: "bold", lorem(5))
+- Bold + Fakebold: #fakebold[#text(weight: "bold", lorem(5))]
 ```
 
 ```typst
-Bold + Fakebold: #fakebold(base-weight: "bold")[#lorem(5)] \
-#set text(weight: "bold")
-Bold + Fakebold: #fakebold[#lorem(5)]
+- Bold + Fakebold: #fakebold(base-weight: "bold")[#lorem(5)]
+- Bold + Fakebold: #set text(weight: "bold"); #fakebold[#lorem(5)]
 ```
 
 ### `regex-fakebold`
@@ -39,22 +37,21 @@ Bold + Fakebold: #fakebold[#lorem(5)]
 ```typst
 + RegExp `[a-o]`: #regex-fakebold(reg-exp: "[a-o]")[#lorem(5)]
 + RegExp `\p{script=Han}`: #regex-fakebold(reg-exp: "\p{script=Han}")[衬衫的价格是9磅15便士。] \
-#set text(weight: "bold")
-+ RegExp `\p{script=Han}`: #regex-fakebold(reg-exp: "\p{script=Han}")[衬衫的价格是9磅15便士。]
++ RegExp `\p{script=Han}`: #set text(weight: "bold"); #regex-fakebold(reg-exp: "\p{script=Han}")[衬衫的价格是9磅15便士。]
 ```
 
 ### `show-fakebold`
 
 ```typst
 #show text: show-fakebold
-Regular: #lorem(10) \
-#text(weight: "bold")[Bold: #lorem(10)]
+- Regular: #lorem(10)
+- Bold: #text(weight: "bold")[#lorem(10)]
 ```
 
 ```typst
-#show strong: it => show-fakebold(reg-exp: "\p{script=Han}", it)
-Regular: 我正在使用 Typst 排版。 \
-Strong: *我正在使用 Typst 排版。*
+#show strong: show-fakebold.with(reg-exp: "\p{script=Han}")
+- Regular: 我正在使用 Typst 排版。
+- Strong: *我正在使用 Typst 排版。*
 ```
 
 ## License
