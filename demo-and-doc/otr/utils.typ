@@ -21,7 +21,7 @@
           stroke: 0.5pt + luma(180),
           inset: 10pt,
           width: 100%,
-          eval(source.text, mode: "markup")
+          eval("#import \"../../lib.typ\": * \n" + source.text, mode: "markup")
         )
       }
     }
@@ -38,9 +38,11 @@
       "bool": rgb("#ffedc1"),
       "none": rgb("#ffcbc4"),
       "content": rgb("#a6ebe6"),
+      "angle": rgb("#e7d9ff"),
+      "relative": rgb("#e7d9ff"),
     ).at(s.text, default: luma(220))
   } else {fill}
-  
+
   box(
     inset: 3pt,
     fill: fillcolor,
