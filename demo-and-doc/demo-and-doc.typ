@@ -65,11 +65,6 @@ Cuti simulates fake bold by utilizing the `stroke` attribute of `text`. This pac
 
 == fakebold
 
-`fakebold(` \
-#h(2em) `base-weight:` #typebox[none] #typebox[int] #typebox[str] default: #typebox[none] `,` \
-#h(2em) #typebox[content] \
-`)`
-
 `#fakebold[]` with no parmerter will apply the #fakebold[fakebold] effect to characters.
 
 #example(
@@ -80,24 +75,20 @@ Cuti simulates fake bold by utilizing the `stroke` attribute of `text`. This pac
   ```
 )
 
-`#fakebold[]` has a `base-weight` parameter that can be used to specify a certain weight as the base weight for fake bold. By default, or when `base-weight` is `none`, the base weight will be inherited from the above context.
+`#fakebold[]` can accept the same parameters as `#text`. In particular, if the `weight` parameter is specified, it can be used to outline based on a certain font weight. If `weight` is not specified, the baseline font weight will be inherited from the context. Specifying the `stroke` parameter will be ignored.
 
 #example(
   ```typst
-  - Bold + Fakebold: #fakebold(base-weight: "bold")[#lorem(5)]
+  - Bold + Fakebold: #fakebold(weight: "bold")[#lorem(5)]
   - Bold + Fakebold: #set text(weight: "bold"); #fakebold[#lorem(5)]
   ```
 )
 
+*Note:* The `base-weight` parameter used by `cuti:0.2.0` is still retained to ensure compatibility.
+
 == #regex-fakebold
 
-`regex-fakebold(` \
-#h(2em) `reg-exp:` #typebox[str] default: `".",` \
-#h(2em) `base-weight:` #typebox[none] #typebox[int] #typebox[str] default: #typebox[none] `,` \
-#h(2em) #typebox[content] \
-`)`
-
-The `#regex-fakebold` is designed to be used in multilingual and multi-font scenarios. It allows the use of a RegExp string as the `reg-exp` parameter to match characters that will have the fake bold effect applied. It also accepts the `base-weight` parameter.
+The `#regex-fakebold` is designed to be used in multilingual and multi-font scenarios. It allows the use of a RegExp string as the `reg-exp` parameter to match characters that will have the fake bold effect applied. It can also accept the same parameters as `#text`.
 
 #example(
   ```typst
@@ -109,13 +100,16 @@ The `#regex-fakebold` is designed to be used in multilingual and multi-font scen
 
 In Example \#3, `9` and `15` are the real bold characters from the font file, while the other characters are simulated as "fake bold" based on the `regular` weight.
 
-== show-fakebold
+If the `fill` parameter of `#text` is set to a specific color or gradient, , the fake bold outline will also change to the corresponding color.
 
-`show-fakebold(` \
-#h(2em) `reg-exp:` #typebox[str] default: `"."` \
-#h(2em) `base-weight:` #typebox[none] #typebox[int] #typebox[str] default: #typebox[none] `,` \
-#h(2em) #typebox[content] \
-`)`
+#example(
+  ```typst
+  - Blue + Fakebold: #fakebold(fill: blue)[花生瓜子八宝粥，啤酒饮料矿泉水。#lorem(5)]
+  - Gradient + Fakebold: #set text(fill: gradient.conic(..color.map.rainbow)); #fakebold[花生瓜子八宝粥，啤酒饮料矿泉水。#lorem(5)]
+  ```
+)
+
+== show-fakebold
 
 In multilingual and multi-font scenarios, different languages often utilize their own fonts, but not all fonts contain the `bold` weight. It can be inconvenient to use `#fakebold` or `#regex-fakebold` each time we require `strong` or `bold` effects. Therefore, the `#show-fakebold` function is introduced for `show` rule.
 
@@ -139,7 +133,7 @@ Typically, the combination of bold + fakebold is not the desired effect. It is u
   ```
 )
 
-It also accepts the `base-weight` parameter.
+It can also accept the same parameters as `#text`.
 
 == cn-fakebold & show-cn-fakebold
 

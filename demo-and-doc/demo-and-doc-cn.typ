@@ -22,7 +22,7 @@ Cuti 是一个为了方便用户使用伪粗体和伪斜体而设计的包。
 
 #example(
   ```typst
-  #import "@preview/cuti:0.2.0": show-cn-fakebold
+  #import "@preview/cuti:0.2.1": show-cn-fakebold
   #show: show-cn-fakebold
   ```,
   sd: false
@@ -94,12 +94,7 @@ Cuti 利用 `text` 的 `stroke` 属性生成伪粗体。该工具通常可用于
 
 == fakebold
 
-`fakebold(` \
-#h(2em) `base-weight:` #typebox[none] #typebox[int] #typebox[str] 默认值: #typebox[none] `,` \
-#h(2em) #typebox[content] \
-`)`
-
-不带 `base-weight` 参数的 `#fakebold[]` 会为字符添加#fakebold[伪粗体]效果。
+不带其他参数的 `#fakebold[]` 会为字符添加#fakebold[伪粗体]效果。
 
 #example(
   ```typst
@@ -109,24 +104,29 @@ Cuti 利用 `text` 的 `stroke` 属性生成伪粗体。该工具通常可用于
   ```
 )
 
-`#fakebold[]` 有一个 `base-weight` 参数，可以用于指定基于什么字重描边。 默认情况或 `base-weight: none` 时，基准字重会从上文继承。
+`#fakebold[]` 可以接受与 `#text` 相同的参数。特别地，若指定 `weight` 参数，可以用于指定基于某种字重进行描边。如果不指定 `weight`，基准字重会从上文继承。指定 `stroke` 参数会被忽略。
 
 #example(
   ```typst
-  - Bold + Fakebold: #fakebold(base-weight: "bold")[#lorem(5)]
+  - Bold + Fakebold: #fakebold(weight: "bold")[#lorem(5)]
   - Bold + Fakebold: #set text(weight: "bold"); #fakebold[#lorem(5)]
+  ```
+)
+
+#fakebold[注:] `cuti:0.2.0` 使用的 `base-weight` 参数仍保留以保证兼容性。
+
+如果将文字设置为彩色，伪粗体描边也将变成相应的颜色。
+
+#example(
+  ```typst
+  - Blue + Fakebold: #fakebold(fill: blue)[花生瓜子八宝粥，啤酒饮料矿泉水。#lorem(5)]
+  - Gradient + Fakebold: #set text(fill: gradient.conic(..color.map.rainbow)); #fakebold[花生瓜子八宝粥，啤酒饮料矿泉水。#lorem(5)]
   ```
 )
 
 == #regex-fakebold
 
-`regex-fakebold(` \
-#h(2em) `reg-exp:` #typebox[str] 默认值: `".",` \
-#h(2em) `base-weight:` #typebox[none] #typebox[int] #typebox[str] 默认值: #typebox[none] `,` \
-#h(2em) #typebox[content] \
-`)`
-
-`#regex-fakebold` 设计上是用于多语言、多字体情境的，可以根据参数 `reg-exp` 内的正则表达式只将匹配到的字符应用伪粗体格式。它也可以接受 `base-weight` 参数。
+`#regex-fakebold` 设计上是用于多语言、多字体情境的，可以根据参数 `reg-exp` 内的正则表达式只将匹配到的字符应用伪粗体格式。它也可以接受 `#font` 相同的参数。
 
 #example(
   ```typst
@@ -139,12 +139,6 @@ Cuti 利用 `text` 的 `stroke` 属性生成伪粗体。该工具通常可用于
 在上面的例子 \#3 中, `9` 和 `15` 是字体提供的“真”粗体，而其他字符是用 `regular` 字重描边得到的伪粗体。
 
 == show-fakebold
-
-`show-fakebold(` \
-#h(2em) `reg-exp:` #typebox[str] 默认值: `".",` \
-#h(2em) `base-weight:` #typebox[none] #typebox[int] #typebox[str] 默认值: #typebox[none] `,` \
-#h(2em) #typebox[content] \
-`)`
 
 在多语言、多字体的场景中，不同的语言通常使用不同的字体，但是不是所有的字体都自带 `bold` 字重。需要 `strong` 或者 `bold` 效果时，每次都使用  `#fakebold`  `#regex-fakebold` 并不方便。所以，我们提供了用于设置 `show` 规则 `#show-fakebold` 函数。
 
@@ -168,13 +162,11 @@ Cuti 利用 `text` 的 `stroke` 属性生成伪粗体。该工具通常可用于
   ```
 )
 
-`show-fakebold` 也接受 `base-weight` 参数。
+`show-fakebold` 也接受 `#font` 相同的参数。
 
 == cn-fakebold & show-cn-fakebold
 
 这两个都是为中文排版封装的。
-
-`cn-fakebold(`#typebox[content]`)`
 
 `cn-fakebold` 是 `regex-fakebold` 的封装。`cn-fakebold` 会将中文和常见符号进行伪粗体处理，基准字重为 `regular` 字重。请注意，在混排中英文时，需要另行指定 `weight: "bold"`。
 
@@ -188,8 +180,6 @@ Cuti 利用 `text` 的 `stroke` 属性生成伪粗体。该工具通常可用于
   - Bold + `cn-fakebold`: #cn-fakebold[在 2024 年的今天，《Never Gonna Give You Up》仍有独特的魅力。]
   ```
 )
-
-`show-cn-fakebold(`#typebox[content]`)`
 
 `show-cn-fakebold` 是 `show-fakebold` 的封装，默认的正则范围是中文字符与常见标点符号。
 
@@ -212,6 +202,8 @@ Cuti 利用 `text` 的 `stroke` 属性生成伪粗体。该工具通常可用于
   ]
   ```
 )
+
+这两个函数也可以接受 `#font` 相同的参数，以指定中文字符加粗的效果。
 
 // ----------------------------------------------------
 
