@@ -13,7 +13,7 @@
 
 == Introduction
 
-Cuti is a package designed for simulating fake bold / fake italic. 
+Cuti #footnote[/kjuːti/.] is a package designed for simulating fake bold / fake italic. 
 
 
 == Demo

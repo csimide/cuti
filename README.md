@@ -1,6 +1,6 @@
 # Cuti
 
-Cuti is a package that simulates fake bold / fake italic. This package is typically used on fonts that do not have a `bold` weight, such as "SimSun".
+Cuti (/kjuːti/) is a package that simulates fake bold / fake italic. This package is typically used on fonts that do not have a `bold` weight, such as "SimSun".
 
 ## Usage
 

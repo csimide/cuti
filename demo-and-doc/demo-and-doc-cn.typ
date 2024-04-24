@@ -14,11 +14,9 @@
 
 == 简介
 
-Cuti 是一个为了方便用户使用伪粗体和伪斜体而设计的包。
+Cuti #footnote[读作 `/kjuːti/`，或许可以读作 `/tsʰu˥ tʰi˥/`。] 是一个为了方便用户使用伪粗体和伪斜体而设计的包。
 
 == 光速上手
-
-在文档顶端加入
 
 #example(
   ```typst
@@ -28,7 +26,7 @@ Cuti 是一个为了方便用户使用伪粗体和伪斜体而设计的包。
   sd: false
 )
 
-宋体、黑体、楷体的加粗就工作了。
+在文档顶端加入如上代码，宋体、黑体、楷体的加粗就工作了。
 
 #fakebold[请注意: ]如果您使用 Source Han Sans / Source Han Serif 等包含 `bold` 字重的中文字体，不建议您对整个文档使用 `show: show-cn-fakebold` ——对整个文档使用 `show: show-cn-fakebold` 将导致支持中文粗体的字体也会使用“伪粗体”版的粗体。如下所示：
 
