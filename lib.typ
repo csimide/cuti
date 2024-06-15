@@ -22,11 +22,11 @@
 }
 
 #let cn-fakebold(s, ..params) = {
-  regex-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]", base-weight: "regular", s, ..params)
+  regex-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—\d]", base-weight: "regular", s, ..params)
 }
 
 #let show-cn-fakebold(s, ..params) = {
-  show-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]", base-weight: "regular", s, ..params)
+  show-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—\d]", base-weight: "regular", s, ..params)
 }
 
 
