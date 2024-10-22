@@ -1,5 +1,6 @@
 #let fakebold(base-weight: none, s, ..params) = {
   set text(weight: base-weight) if base-weight != none
+  set text(weight: "regular") if base-weight == none
   set text(..params) if params != ()
   context {
     set text(stroke: 0.02857em + text.fill)
