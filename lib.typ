@@ -30,12 +30,16 @@
   show-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]", base-weight: "regular", s, ..params)
 }
 
-#let regex-fakeitalic(reg-exp: ".", ang: -18.4deg, spacing: none, s) = {
+#let regex-fakeitalic(reg-exp: "\b.+?\b", ang: -18.4deg, s) = {
   show regex(reg-exp): it => {
-    box(place(skew(ax: ang, it)), baseline: -0.7em) + hide(it)
+    box(skew(ax: ang, reflow: false, it))
   }
   s
-  if spacing != none {h(spacing)}
 }
 
-#let fakeitalic(ang: -18.4deg, s) = regex-fakeitalic(reg-exp: "[^ ]", ang: ang, s)
+#let fakeitalic(ang: -18.4deg, s) = regex-fakeitalic(ang: ang, s)
+
+#let fakesc(s) = {
+  show regex("[\p{Lu}]"): text.with((10 / 8) * 1em)
+  text(0.8em, upper(s))
+}
