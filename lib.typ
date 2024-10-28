@@ -48,7 +48,7 @@
 
 #let fakesc(s, scaling: 0.75) = {
   show regex("\p{Ll}+"): it => {
-    text(scaling * 1em, upper(it))
+    context text(scaling * 1em, stroke: 0.01em + text.fill, upper(it))
   }
   text(s)
 }
