@@ -1,10 +1,11 @@
-#let fakebold(base-weight: auto, s, ..params) = {
+#let fakebold(base-weight: auto, weight: auto, s, ..params) = {
+  let t-weight = if base-weight == auto {weight} else {base-weight}
   assert(
-    base-weight in (auto, none) or type(base-weight) in (str, int),
-    message: "`base-weight` should be `auto`, `none`, `int` or `str` type.",
+    t-weight in (auto, none) or type(t-weight) in (str, int),
+    message: "`base-weight`/`weight` should be `auto`, `none`, `int` or `str` type.",
   )
-  set text(weight: base-weight) if type(base-weight) in (str, int)
-  set text(weight: "regular") if base-weight == auto
+  set text(weight: t-weight) if type(t-weight) in (str, int)
+  set text(weight: "regular") if t-weight == none
   set text(..params) if params != ()
   context {
     set text(stroke: 0.02857em + text.fill)
@@ -12,26 +13,26 @@
   }
 }
 
-#let regex-fakebold(reg-exp: ".+", base-weight: auto, s, ..params) = {
+#let regex-fakebold(reg-exp: ".+", s, ..params) = {
   show regex(reg-exp): it => {
-    fakebold(base-weight: base-weight, it, ..params)
+    fakebold(it, ..params)
   }
   s
 }
 
-#let show-fakebold(reg-exp: ".+", base-weight: auto, s, ..params) = {
+#let show-fakebold(reg-exp: ".+", s, weight: none, ..params) = {
   show text.where(weight: "bold").or(strong): it => {
-    regex-fakebold(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
+    regex-fakebold(reg-exp: reg-exp, it, weight: weight, ..params)
   }
   s
 }
 
 #let cn-fakebold(s, ..params) = {
-  regex-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]+", base-weight: "regular", s, ..params)
+  regex-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]+", weight: "regular", s, ..params)
 }
 
 #let show-cn-fakebold(s, ..params) = {
-  show-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]+", base-weight: "regular", s, ..params)
+  show-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]+", weight: "regular", s, ..params)
 }
 
 #let regex-fakeitalic(reg-exp: ".+?", ang: -18.4deg, s) = {
