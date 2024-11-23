@@ -1,25 +1,30 @@
 # Cuti
 
-Cuti (/kjuːti/) is a package that simulates fake bold / fake italic. This package is typically used on fonts that do not have a `bold` weight, such as "SimSun".
+Cuti (/kjuːti/) is a package that simulates fake bold / fake italic / fake small captials. This package is typically used on fonts that do not have a `bold` weight, such as "SimSun".
 
 ## Usage
 
-Please refer to the [English Demo & Doc](./demo-and-doc/demo-and-doc.pdf) located in the `demo-and-doc` directory for details.
+Please refer to the [Documentation](https://csimide.github.io/cuti-docs/en/).
 
-本 Package 提供中文文档： [中文 Demo 与文档](./demo-and-doc/demo-and-doc-cn.pdf)。
+本 Package 提供中文文档： [中文文档](https://csimide.github.io/cuti-docs/zh-CN/)。
 
 ### Getting Started Quickly (For Chinese User)
 
 Please add the following content at the beginning of the document:
 
 ```typst
-#import "@preview/cuti:0.2.1": show-cn-fakebold
+#import "@preview/cuti:0.3.0": show-cn-fakebold
 #show: show-cn-fakebold
 ```
 
 Then, the bolding for SimHei, SimSun, and KaiTi fonts should work correctly.
 
 ## Changelog
+
+### `0.3.0`
+
+- feat: Add fake small caps feature by Tetragramm.
+- fix: `show-fakebold` may crash on Typst version 0.12.0.
 
 ### `0.2.1`
 

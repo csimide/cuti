@@ -1,10 +1,10 @@
 [package]
 name = "cuti"
-version = "0.2.1"
+version = "0.3.0"
 entrypoint = "lib.typ"
-authors = ["csimide", "Enivex"]
+authors = ["csimide", "Enivex", "Tetragramm"]
 license = "MIT"
-description = "Easily simulate (fake) bold and italic characters."
-compiler = "0.11.0"
+description = "Easily simulate (fake) bold, italic and small capital characters."
+compiler = "0.12.0"
 repository = "https://github.com/csimide/cuti"
 exclude = ["demo-and-doc"]
