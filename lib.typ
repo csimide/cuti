@@ -13,9 +13,9 @@
   set text(..params) if params != ()
   context {
     let t-stroke = if stroke == auto { 0.02857em + text.fill } else if type(stroke) == length {
-      stroke + text.fell
+      stroke + text.fill
     } else { stroke }
-    set text(stroke: 0.02857em + text.fill)
+    set text(stroke: t-stroke)
     s
   }
 }
