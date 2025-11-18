@@ -1,13 +1,20 @@
-#let fakebold(base-weight: auto, weight: auto, s, ..params) = {
-  let t-weight = if base-weight == auto {weight} else {base-weight}
+#let fakebold(stroke: auto, base-weight: auto, weight: auto, s, ..params) = {
+  let t-weight = if base-weight == auto { weight } else { base-weight }
   assert(
     t-weight in (auto, none) or type(t-weight) in (str, int),
     message: "`base-weight`/`weight` should be `auto`, `none`, `int` or `str` type.",
+  )
+  assert(
+    stroke == auto or type(stroke) in (std.stroke, length),
+    message: "`stroke` shoule be `auto`, `length` or `stroke` type.",
   )
   set text(weight: t-weight) if type(t-weight) in (str, int)
   set text(weight: "regular") if t-weight == none
   set text(..params) if params != ()
   context {
+    let t-stroke = if stroke == auto { 0.02857em + text.fill } else if type(stroke) == length {
+      stroke + text.fell
+    } else { stroke }
     set text(stroke: 0.02857em + text.fill)
     s
   }
@@ -45,7 +52,11 @@
 #let fakeitalic(
   ang: -18.4deg,
   s,
-) = regex-fakeitalic(reg-exp: "(?:\b[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}！-･〇-〰—]+?\b|[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}])", ang: ang, s)
+) = regex-fakeitalic(
+  reg-exp: "(?:\b[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}！-･〇-〰—]+?\b|[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}])",
+  ang: ang,
+  s,
+)
 
 #let show-fakeitalic(
   ang: -18.4deg,
@@ -58,7 +69,10 @@
 }
 
 #let cn-fakeitalic(s) = {
-  regex-fakeitalic(reg-exp: "(?:\b[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}！-･〇-〰—]+?\b|[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}])", s)
+  regex-fakeitalic(
+    reg-exp: "(?:\b[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}！-･〇-〰—]+?\b|[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}])",
+    s,
+  )
 }
 
 #let show-cn-fakeitalic(s) = {

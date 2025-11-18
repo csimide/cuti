@@ -21,6 +21,11 @@ Then, the bolding for SimHei, SimSun, and KaiTi fonts should work correctly.
 
 ## Changelog
 
+### `0.4.0`
+
+- feat: Provide fake-italic `#show` by @Xiao-Chenguang. https://github.com/csimide/cuti/pull/8
+- feat: Allow adjusting the stroke of fake-bold text. https://github.com/csimide/cuti/issues/10
+
 ### `0.3.0`
 
 - feat: Add fake small caps feature by Tetragramm.
