@@ -1,6 +1,6 @@
 #import "../lib.typ": *
 #set page(margin: 2cm)
-#show table.cell.where(y: 0): it => {strong(it)}
+#show table.cell.where(y: 0): it => { strong(it) }
 
 // Please add `set text(font: ...)` to test how text appears in different fonts when testing typography layouts.
 
@@ -14,16 +14,10 @@
 
 #[
   #let en-test(s) = table(
-    columns: (1fr, ) * 3,
+    columns: (1fr,) * 3,
     stroke: 0.5pt,
-    table.header(
-      [Original],
-      [Italic - Font],
-      [Fakeitalic -18.4deg - `cuti`]
-    ),
-    s,
-    emph(s),
-    fakeitalic(s)
+    table.header([Original], [Italic - Font], [Fakeitalic -18.4deg - `cuti`]),
+    s, emph(s), fakeitalic(s),
   )
 
   #en-test(lorem(30))
@@ -38,16 +32,11 @@
 
 #[
   #let cn-test(s) = table(
-    columns: (1fr, ) * 3,
+    columns: (1fr,) * 3,
     stroke: 0.5pt,
-    table.header(
-      [Original],
-      [Fakebold - `cuti`],
-      [zh Fakebold + en Font Bold]
-    ),
-    s,
-    emph(s),
-    fakeitalic(s)
+    table.header([Original], [Fakeitalic - `cuti`], [zh Fakeitalic + en FontItalic]),
+    s, emph(s),
+    show-cn-fakeitalic(emph(s)),
   )
 
   #set par(justify: true)
