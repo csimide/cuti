@@ -62,8 +62,11 @@
   ang: -18.4deg,
   s,
 ) = {
-  show text.where(style: "italic").or(emph): it => {
-    fakeitalic(ang: ang, it)
+  show emph: it => {
+    fakeitalic(ang: ang, it.body)
+  }
+  show text.where(style: "italic"): it => {
+    fakeitalic(ang: ang, text(style: "normal", it))
   }
   s
 }
